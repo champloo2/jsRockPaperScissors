@@ -1,0 +1,96 @@
+<script>
+
+//function called computerPlay to randomly select Rock,Paper,Scissors
+function computerPlay(){
+	let rand = Math.floor((Math.random() * 3) + 1);
+	let choice;
+	if(rand == 1){
+		choice = 'rock';
+	}
+	else if (rand == 2){
+		choice = 'paper';
+	}
+	else{
+		choice = 'scissors';
+	}
+	return choice;
+}
+
+function playRound (playerSelection, computerSelection){
+	let winner;
+	if(playerSelection == 'rock'){
+		if (computerSelection == playerSelection){
+			winner = 'tie';
+		}
+		else if(computerSelection =='paper'){
+			winner = 'computer';
+		}
+		else{
+			winner = 'player';
+		}
+	}
+	else if (playerSelection == 'paper'){
+		if (computerSelection == playerSelection){
+			winner = 'tie';
+		}
+		else if(computerSelection =='scissors'){
+			winner = 'computer';
+		}
+		else{
+			winner = 'player';
+		}
+	}
+	else if (playerSelection == 'scissors'){
+		if (computerSelection == playerSelection){
+			winner = 'tie';
+		}
+		else if(computerSelection =='rock'){
+			winner = 'computer';
+		}
+		else{
+			winner = 'player';
+		}
+	}
+	else{
+		winner = 'tie';
+	}
+	return winner;
+	
+}
+
+//function that takes playerSelection and computerSelection and determins winner
+//case sensative
+
+
+//function called game
+function game() {
+	let i = 1;
+	let playerPoints = 0;
+	let computerPoints = 0;
+//for 1-5
+while (i<=5){
+//run function computerPlay
+let computerSelection = computerPlay();
+//prompt the user
+let playerSelection = window.prompt('choose Rock, Paper, or Scissors');
+//change to all lower case
+playerSelection = playerSelection.toLowerCase();
+//pass computerSelection and playerSelection into play a round
+let winner = playRound(playerSelection, computerSelection);
+//keep score
+if (winner == 'player'){
+	playerPoints++;
+	i++
+}
+else if (winner == 'computer'){
+	computerPoints++;
+	i++;
+}
+else{};
+}
+console.log('player points: ' + playerPoints + ' computer points: ' + computerPoints);
+if (computerPoints > playerPoints){console.log('computer wins');}
+else {console.log('player wins');}
+//keeps score for 5 rounds and determins a winner
+}
+</script>
